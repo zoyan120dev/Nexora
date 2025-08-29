@@ -33,9 +33,6 @@ Whether you want to **learn, teach, collaborate, or get noticed by recruiters**,
 | User Profiles | Showcase personal info, skills, achievements | Auto portfolio generation, recruiter-friendly |
 | Social Feed | Share posts, projects, tips | Multi-format feed: Video + Code + Docs + Images |
 | Video / Reel Upload | Share short tutorials or demos | Educational reels focused on skills |
-| Code Snippets / Mini Projects | Share and collaborate on code | Learning + showcase + collaboration |
-| Documents / PDFs / Tutorials | Upload and access learning resources | Multi-format learning hub |
-| Portfolio / Showcase | Display professional projects | Recruiter-ready portfolio from posts |
 | Learning Challenges / Daily Tips | Motivation & skill improvement | Gamification with points, streaks, leaderboards |
 | Freelance / Job Board | Apply or post gigs/projects | Real-world project experience integrated with social feed |
 | Community Q&A / Discussion | Peer support & problem-solving | Interest-based skill network |
