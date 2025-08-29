@@ -90,7 +90,7 @@ Contributors worldwide can join, improve, and expand the platform freely.
 
 ## 🎨 Logo / Branding
 
-![Nexora Logo](link-to-logo.png)  
+![Nexora Logo](https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-0224-622f-bcf5-5df12bf34693/raw?se=2025-08-29T16%3A44%3A53Z&sp=r&sv=2024-08-04&sr=b&scid=90d1a641-a974-5872-85f2-1d3f9660980f&skoid=03727f49-62d3-42ac-8350-1c0e6559d238&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-28T20%3A33%3A07Z&ske=2025-08-29T20%3A33%3A07Z&sks=b&skv=2024-08-04&sig=obDcqkg9N1451w67tFW4KyfvPXK/gkr7NqtrPLl3HqE%3D)  
 
 - Modern, professional, tech-oriented  
 - Colors: Blue + Purple gradient  
