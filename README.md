@@ -1,12 +1,40 @@
-# React + Vite
+Social Media Platform – "Nexora"
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tech Stack: React.js, Redux Toolkit, Node.js, Express.js, MongoDB, TailwindCSS
 
-Currently, two official plugins are available:
+Description:
+Developed a full-stack social media platform where users can create profiles, post content, like & comment on posts, and connect with other users. Implemented secure authentication using JWT and integrated a responsive UI for mobile and desktop.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Key Features:
 
-## Expanding the ESLint configuration
+🔐 User Authentication: Login/Register with JWT-based authentication & bcrypt password hashing.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+📝 Post Management: Users can create, edit, delete, like, and comment on posts.
+
+👥 Follow System: Follow/unfollow users & see their posts on feed.
+
+💬 Real-time Chat: Implemented using Socket.IO for instant messaging.
+
+📱 Responsive UI: Built with TailwindCSS, optimized for all devices.
+
+🌐 API Development: RESTful API using Node.js + Express.js with MongoDB as database.
+
+Responsibilities:
+
+Designed reusable React components with state management using Redux Toolkit.
+
+Built REST API endpoints (CRUD) with Express.js and MongoDB.
+
+Integrated secure login system with JWT authentication.
+
+Implemented responsive UI with TailwindCSS and optimized performance.
+
+Deployed the app on Vercel (frontend) and Render/Heroku (backend).
+
+Outcome:
+
+Successfully built a scalable social media project with modern web technologies.
+
+Learned full-stack development workflow (frontend, backend, database, deployment).
+
+Gained practical experience in authentication, REST API, and real-time communication.
