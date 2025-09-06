@@ -1,14 +1,18 @@
 import {BrowserRouter,  Routes, Route}  from "react-router-dom"
+import NavbarArea from "./component/Navbar";
+import {Button} from "@heroui/react";
+import Home from "./component/Home";
+
 
 function App() {
 
 
   return (
     <>
-    <h1 className="text-center text-red-500 text-3xl font-bold">hello</h1>
       <BrowserRouter>
+      <NavbarArea/>
          <Routes>
-          <Route path="/"/>
+          <Route path="/" element={<Home/>}/>
          </Routes>
       </BrowserRouter>
     </>
