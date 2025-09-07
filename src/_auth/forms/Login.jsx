@@ -3,9 +3,17 @@ import { Image } from "@heroui/react";
 import { Input } from "@heroui/react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Button } from "@heroui/react";
+import { useNavigate } from 'react-router-dom';
 
 
 function SinginForm() {
+  
+   let Nativget = useNavigate();
+
+   const goTOSingUp = () =>{
+     Nativget('/signup')
+   }
+
 
   const [isVisible, setIsVisible] = React.useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible)
@@ -71,7 +79,7 @@ function SinginForm() {
                      Sign In With <i class="fa-brands fa-google"></i>
                     </Button>
                       
-                      <Button className='flex-1 font-bold text-xl text-white bg-gradient-to-r from-purple-500 via-pink-500 to-red-500'>Sing Up</Button>
+                      <Button className='flex-1 font-bold text-xl text-white bg-gradient-to-r from-purple-500 via-pink-500 to-red-500' onClick={goTOSingUp}>Sign Up</Button>
 
                   </div>
                 </div>

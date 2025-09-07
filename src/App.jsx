@@ -3,6 +3,7 @@ import NavbarArea from "./component/Navbar";
 import {Button} from "@heroui/react";
 import Home from "./component/Home";
 import SinginForm from "./_auth/forms/Login";
+import Singup from "./loginLogut/Singup";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       {/* <NavbarArea/> */}
          <Routes>
           <Route path="/" element={<SinginForm/>}/>
+          <Route path="/signup" element={<Singup/>}/>
          </Routes>
       </BrowserRouter>
      </main>
