@@ -14,7 +14,7 @@ function Signup() {
   return (
     <>
       <section className='w-full bg-gray-800 md:h-[100vh]  md:flex items-center'>
-        <div className='flex flex-col md:h-[80vh] md:min-w-[800px] mx-auto bg-black md:rounded-2xl shadow-xl h-[100vh]'>
+        <div className='flex flex-col md:h-[80vh] md:min-w-[800px] justify-center md:justify-baseline mx-auto bg-black md:rounded-2xl shadow-xl h-[100vh]'>
           <div className='text-center pt-7'>
             <h1 className='text-4xl  md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-red-500'>Nexora</h1>
             <p className='py-2 text-gray-400 text-2xl'>Create an Account</p>
