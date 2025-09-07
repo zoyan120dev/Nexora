@@ -11,7 +11,7 @@ function SinginForm() {
   const toggleVisibility = () => setIsVisible(!isVisible)
   return (
     <>
-      <section className='w-full bg-black h-[100vh]'>
+      <section className='w-full bg-gray-800 h-[100vh]'>
         <div className=' h-[100vh]  p-10 rounded-3xl flex space-x-3 max-w-[1200px] mx-auto justify-center items-center flex-col md:flex-row'>
           {/* left section */}
           <div className='md:flex-1 w-full'>
@@ -67,11 +67,11 @@ function SinginForm() {
                 <div className='text-center'>
                   <a href="#" className='text-center text-blue-600 text-xl'>forget password  ?</a>
                   <div className='mt-5 flex gap-2 items-center justify-center'>
-                    <Button color="primary" variant="bordered" className='text-xl flex-1'>
+                    <Button className='text-xl flex-1 bg-white'>
                      Sign In With <i class="fa-brands fa-google"></i>
                     </Button>
                       
-                      <Button className='flex-1 text-xl text-white bg-gradient-to-r from-purple-500 via-pink-500 to-red-500'>Sing Up</Button>
+                      <Button className='flex-1 font-bold text-xl text-white bg-gradient-to-r from-purple-500 via-pink-500 to-red-500'>Sing Up</Button>
 
                   </div>
                 </div>
