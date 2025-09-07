@@ -23,22 +23,23 @@ function SinginForm() {
         <div className=' h-[100vh]  p-10 rounded-3xl flex space-x-3 max-w-[1200px] mx-auto justify-center items-center flex-col md:flex-row'>
           {/* left section */}
           <div className='md:flex-1 w-full'>
-            <h1 className="text-5xl font-bold text-sky-300">
+            <h1 className="text-5xl font-bold text-sky-300 hidden md:block">
               Welcome to <span className='text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-red-500'> Nexora</span>
             </h1>
 
-            <p className='py-4 text-lg text-gray-400 w-[80%]'>Sign in and start your journey with Nexora social media platform</p>
+            <p className='py-4 text-lg text-gray-400 w-[80%] hidden md:block'>Sign in and start your journey with Nexora social media platform</p>
             <Image
               isBlurred
               alt="HeroUI Album Cover"
-              className="m-5 mx-auto "
+              className="m-5 mx-auto hidden md:block"
               src="https://heroui.com/images/album-cover.png"
               width={240}
             />
           </div>
           {/* right sections */}
-          <div className='md:flex-1 md:max-w-[500px] max-w-full'>
-            <form action="">
+          <div className='md:flex-1 md:max-w-[500px] w-full'>
+            <div>
+              <form action="" className=''>
               <div className="flex w-full flex-wrap md:flex-nowrap gap-4 flex-col">
 
                 <Input label="Email or Phone Number" type="email" />
@@ -74,18 +75,19 @@ function SinginForm() {
 
                 <div className='text-center'>
                   <a href="#" className='text-center text-blue-600 text-xl'>forget password  ?</a>
-                  <div className='mt-5 flex gap-2 items-center justify-center'>
-                    <Button className='text-xl flex-1 bg-white'>
+                  <div className='mt-5 flex gap-2 items-center justify-center flex-col md:flex-row'>
+                    <Button className='text-xl flex-1 bg-white w-full py-3 md:py-0'>
                      Sign In With <i class="fa-brands fa-google"></i>
                     </Button>
                       
-                      <Button className='flex-1 font-bold text-xl text-white bg-gradient-to-r from-purple-500 via-pink-500 to-red-500' onClick={goTOSingUp}>Sign Up</Button>
+                      <Button className='flex-1 font-bold text-xl text-white bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 w-full py-3 md:py-0' onClick={goTOSingUp}>Sign Up</Button>
 
                   </div>
                 </div>
 
               </div>
             </form>
+            </div>
           </div>
         </div>
       </section>
