@@ -2,7 +2,14 @@ import React from 'react'
 
 function Home() {
   return (
-   <h1 className='text-center mt-60 font-bold text-white text-6xl'>Welcome to Nexora</h1>
+  <>
+   <section className='bg-black-mood w-full h-full'>
+       <div className='text-center mt-50'>
+           <h4 className='text-[80px] font-extrabold text-red-400'>404</h4>
+           <h1 className='text-center text-error text-4xl font-bold'>The page has not yet been started.</h1>
+       </div>
+   </section>
+  </>
   )
 }
 

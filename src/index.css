@@ -3,3 +3,19 @@
 /* Note: You may need to change the path to fit your project structure */
 @source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
 @custom-variant dark (&:is(.dark *));
+
+@theme{
+    --color-black-mood:#07070A;
+    --color-black-mood-second-color:#0a1128;
+    --color-white-mode:#FAFAFA;
+    --color-white-mode-text-color:#001219;
+    --color-black-mood-text-color:#ECEDEE;
+    --color-black-mood-second-text-color:#8d99ae;
+    --color-placeholder-color-black:#000000;
+    --color-black-mood-bg-color:#f8f9fa;
+    --color-link-color:#1549B6;
+    --color-button-color:#006FEE;
+    --color-second-buuton:#F9F9F9;
+    --color-error:#d90429;
+
+}
