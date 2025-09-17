@@ -4,7 +4,7 @@ import MainContainer from '../socialFeeed/MainContainer';
 function Home() {
   return (
   <>
-   <div className='bg-black-mood p-20 w-full h-[100vh]'>
+   <div className='bg-black-mood p-15 w-full h-[100vh]'>
      <MainContainer/>
    </div>
   </>

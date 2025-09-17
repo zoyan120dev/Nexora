@@ -83,6 +83,7 @@ function LeftSideber() {
         <>
             <section className='w-1/4 h-screen fixed'>
                <div className='flex flex-col gap-7 hidden md:flex'>
+                  <h1 className='text-2xl font-bold text-black-mood-text-color'>Nexora</h1>
                    {
                     LeftSideBerConetent.map((value)=> (
                         <div className='flex items-center gap-2'>
