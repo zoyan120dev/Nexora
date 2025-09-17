@@ -81,8 +81,8 @@ const LeftSideBerConetent = [
 function LeftSideber() {
     return (
         <>
-            <section className='w-1/4 h-screen fixed'>
-               <div className='flex flex-col gap-7 hidden md:flex'>
+            <section className=' fixed'>
+               <div className='flex flex-col gap-7 hidden md:flex mt-10'>
                   <h1 className='text-2xl font-bold text-black-mood-text-color'>Nexora</h1>
                    {
                     LeftSideBerConetent.map((value)=> (
