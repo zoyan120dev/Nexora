@@ -2,32 +2,41 @@ import React from "react";
 import LeftSideber from "./LeftSideber";
 import Post from "./Post";
 import RifghtSideber from "./RifghtSideber";
-import { MdPhoto } from "react-icons/md";
 import PostCard from "./MainBar";
 
-export default function App() {
+export default function Maincontainer() {
   return (
-    <div className="flex min-h-screen w-full bg-black-mood">
+   <>
+       <div className="w-full h-screen flex bg-black-mood overflow-x-hidden">
+
       {/* Left Sidebar */}
-      <div className="w-1/4 border-r border-gray-600 h-screen overflow-auto">
+      <div className="hidden md:flex flex-col w-1/4 h-screen fixed top-0 left-0 border-r border-gray-600 overflow-hidden">
         <LeftSideber />
       </div>
 
-      {/* Center Content */}
-      <div className="w-1/2 overflow-auto">
-        <div className="bg-black-mood-second-color p-5 border-b-1 border-gray-600">
-          <Post />
-        </div>
-        <div className="m-10">
-          <PostCard/>
-          {/* Long content */}
-        </div>
-      </div>
-
       {/* Right Sidebar */}
-      <div className="w-1/4 border-l border-gray-600 h-screen overflow-auto">
+      <div className="hidden lg:flex flex-col w-1/4 h-screen fixed top-0 right-0 border-l border-gray-600 overflow-hidden">
         <RifghtSideber />
       </div>
+
+      {/* Center Feed */}
+      <div className="flex-1 flex flex-col ml-0 md:ml-[25%] lg:ml-[25%] mr-0 lg:mr-[25%]">
+
+        {/* Top Post Box (fixed in layout) */}
+        <div className="flex-shrink-0 p-4 border-b border-gray-600 bg-black-mood-second-color z-10">
+          <Post />
+        </div>
+
+        {/* PostCard list (scrollable) */}
+        <div className="flex-1  p-4 space-y-6">
+          {Array.from({ length: 30 }).map((_, i) => (
+            <PostCard key={i} />
+          ))}
+        </div>
+
+      </div>
+
     </div>
+   </>
   );
 }

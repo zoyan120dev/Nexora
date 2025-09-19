@@ -81,8 +81,8 @@ const LeftSideBerConetent = [
 function LeftSideber() {
     return (
         <>
-            <section className=' fixed'>
-               <div className='flex flex-col gap-7 hidden md:flex mt-10'>
+            <section className=' fixe'>
+               <div className='flex flex-col gap-7 hidden md:flex mt-10 pl-20'>
                   <h1 className='text-2xl font-bold text-black-mood-text-color'>Nexora</h1>
                    {
                     LeftSideBerConetent.map((value)=> (
@@ -90,7 +90,7 @@ function LeftSideber() {
                             <span className='text-black-mood-text-color text-2xl cursor-pointer'>{value.icone}</span>
                             <span className='text-2xl text-black-mood-text-color cursor-pointer'>{value.title}</span>
                             <div className=''>
-                               <div className='relative top-20'>{value.iconea1}</div>
+                               <div className='relative top-20 text-white-mode-text-color'>{value.iconea1}</div>
                               <div className='relative top-20'>{value.iconea2}</div>
                             </div>
                         </div>
