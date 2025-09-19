@@ -13,7 +13,7 @@ import {
 function RifghtSideber() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <div className="p-10 hidden xl:block">
+    <div className="p-10 hidden xl:block fixed">
       {/* Suggested Users */}
       <div className="shadow bg-black-mood-second-color border border-gray-500 p-3 rounded-xl">
         <div className="flex justify-between items-center">
@@ -39,7 +39,7 @@ function RifghtSideber() {
         </div>
       </div>
       {/* Info Card */}
-      <div className="shadow bg-black-mood-second-color border border-gray-500 p-3 rounded-xl mt-10">
+      <div className="shadow bg-black-mood-second-color border border-gray-500 p-3 rounded-xl mt-10 max-w-[300px]">
         <div className="w-[280px] mx-auto">
           <img src="userimg.jpg" alt="" className="rounded-xl cursor-pointer" />
         </div>
@@ -54,7 +54,7 @@ function RifghtSideber() {
           >
             Click here
           </Button>
-          <Modal backdrop="blur" isOpen={isOpen} onClose={onClose}>
+          <Modal backdrop="blur" isOpen={isOpen} onClose={onClose} className="bg-black-mood-second-color">
             <ModalContent>
               {(onClose) => (
                 <>

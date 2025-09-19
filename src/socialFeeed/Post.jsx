@@ -1,19 +1,22 @@
 // Post.jsx
 import { Button, Textarea, User } from "@heroui/react";
 import { MdPhoto } from "react-icons/md";
+import { Input } from "@heroui/react";
 
 function Post() {
   return (
-    <section className="flex flex-col gap-2">
+    <section className="flex flex-col gap-2  sticky top-0">
       <div className="flex items-center gap-2 w-full">
         <div className="text-3xl text-white">
           <User />
         </div>
-        <Textarea
-          isRequired
-          className="flex-1 w-full min-h-[80px]"
-          labelPlacement="outside"
-          placeholder="What's Happening ?"
+        <Input
+         label="What's Happening?"
+         type="text"
+         color="#fff"
+         classNames={{  label: "text-white" }}
+         className=" text-white text-lg placeholder:text-white "
+         variant="bordered"   
         />
         <Button color="primary" className="py-6 px-8">
           Post

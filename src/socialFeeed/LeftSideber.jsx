@@ -81,7 +81,7 @@ const LeftSideBerConetent = [
 function LeftSideber() {
     return (
         <>
-            <section className=' fixe'>
+            <section className='fixed'>
                <div className='flex flex-col gap-7 hidden md:flex mt-10 pl-20'>
                   <h1 className='text-2xl font-bold text-black-mood-text-color'>Nexora</h1>
                    {

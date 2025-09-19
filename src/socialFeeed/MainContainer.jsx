@@ -3,40 +3,28 @@ import LeftSideber from "./LeftSideber";
 import Post from "./Post";
 import RifghtSideber from "./RifghtSideber";
 import PostCard from "./MainBar";
+import SocialFeed from "./MainBar";
 
 export default function Maincontainer() {
   return (
    <>
-       <div className="w-full h-screen flex bg-black-mood overflow-x-hidden">
+     <div className="flex min-h-screen relative">
+         <div className="w-md border-r border-gray-700  shadow hidden lg:block">
+             <LeftSideber/>
+         </div>
+         <div className="flex-1 relative">
+             <div className=" w-full backdrop-blur-md bg-black/50 z-50 p-4 sticky top-0">
+               <Post/>
+             </div>
+             <div className="m-10 space-y-10">
+                <SocialFeed/>
+             </div>
+         </div>
 
-      {/* Left Sidebar */}
-      <div className="hidden md:flex flex-col w-1/4 h-screen fixed top-0 left-0 border-r border-gray-600 overflow-hidden">
-        <LeftSideber />
-      </div>
-
-      {/* Right Sidebar */}
-      <div className="hidden lg:flex flex-col w-1/4 h-screen fixed top-0 right-0 border-l border-gray-600 overflow-hidden">
-        <RifghtSideber />
-      </div>
-
-      {/* Center Feed */}
-      <div className="flex-1 flex flex-col ml-0 md:ml-[25%] lg:ml-[25%] mr-0 lg:mr-[25%]">
-
-        {/* Top Post Box (fixed in layout) */}
-        <div className="flex-shrink-0 p-4 border-b border-gray-600 bg-black-mood-second-color z-10">
-          <Post />
-        </div>
-
-        {/* PostCard list (scrollable) */}
-        <div className="flex-1  p-4 space-y-6">
-          {Array.from({ length: 30 }).map((_, i) => (
-            <PostCard key={i} />
-          ))}
-        </div>
-
-      </div>
-
-    </div>
+         <div className="w-xl border-l border-r-gray-700 hidden xl:block">
+           <RifghtSideber/>
+         </div>
+     </div>
    </>
   );
 }
