@@ -32,9 +32,11 @@ function PostCard() {
       const newUserLikes = {};
       const newLikeCounts = {};
       data.data.forEach(anime => {
-        newUserLikes[anime.mal_id] = false; // user hasn't liked yet
-        newLikeCounts[anime.mal_id] = 0;    // start with 0 likes
+        newUserLikes[anime.mal_id] = false; 
+        newLikeCounts[anime.mal_id]  = 0;    
       });
+      
+
       setUserLikes(prev => ({ ...prev, ...newUserLikes }));
       setLikeCounts(prev => ({ ...prev, ...newLikeCounts }));
     } catch (err) {
@@ -136,9 +138,12 @@ function PostCard() {
                   />
                 }
                 onPress={() => handleLike(anime.mal_id)}
-                className={`text-xl ${isLiked ? "text-red-500" : "text-black-mood-second-text-color"} hover:text-red-500`}
+                className={`text-xl  ${isLiked ? "text-red-500" : "text-black-mood-second-text-color"} hover:text-red-500`}
               >
-                Like  {likeCount}
+               
+                {likeCount > 0 && `Like`}
+
+                {likeCount}
               </Button>
               <Button
                 variant="light"
