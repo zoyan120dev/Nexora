@@ -76,7 +76,6 @@ function Signup() {
               <RadioGroup label="Gender" orientation="horizontal" className='bg-black-mood-bg-color p-2 col-span-2 rounded-2xl flex flex-row  space-x-5'>
                 <Radio value="buenos-aires">Female</Radio>
                 <Radio value="sydney" className='ml-3'>Male</Radio>
-                <Radio value="san-francisco" className='ml-3'>Custom</Radio>
               </RadioGroup>
             </div>
             <p className='text-black-mood-text-color mt-3 leading-tight'>
