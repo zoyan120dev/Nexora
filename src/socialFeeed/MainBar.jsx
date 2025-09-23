@@ -126,15 +126,7 @@ function PostCard() {
               >
                 Like {likeCount > 0 ? likeCount : ""}
               </Button>
-              <Button
-                variant="light"
-                size="sm"
-                startContent={<GoBookmarkFill />}
-                className="text-black-mood-second-text-color hover:text-blue-500 text-xl"
-              >
-                BookMark
-              </Button>
-
+              
               <Button
                 variant="light"
                 size="sm"
