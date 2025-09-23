@@ -2,43 +2,35 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { useInView } from "react-intersection-observer";
 import { FaHeart, FaRegComment, FaShare } from "react-icons/fa";
 
-// Sample video URLs (replace with real API if available)
-const videoUrls = [
-  "https://www.w3schools.com/html/mov_bbb.mp4",
-  "https://www.w3schools.com/html/movie.mp4",
-  "https://samplelib.com/lib/preview/mp4/sample-5s.mp4",
-  "https://samplelib.com/lib/preview/mp4/sample-10s.mp4",
-  "https://samplelib.com/lib/preview/mp4/sample-15s.mp4"
-];
+const API_KEY = "AIzaSyC4S23Hy2Pwk4KILzSQAHYCP0Dv53V4KuM";
 
 // -------------------- Single Reel --------------------
-function Reel({ videoUrl, description }) {
-  const videoRef = useRef();
+function Reel({ videoId, description }) {
+  const iframeRef = useRef();
   const { ref, inView } = useInView({ threshold: 0.6 });
 
   useEffect(() => {
-    if (videoRef.current) {
-      if (inView) videoRef.current.play();
-      else {
-        videoRef.current.pause();
-        videoRef.current.currentTime = 0;
+    if (iframeRef.current) {
+      // autoplay only when in view
+      if (inView) {
+        iframeRef.current.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}`;
+      } else {
+        iframeRef.current.src = `https://www.youtube.com/embed/${videoId}?autoplay=0&mute=1`;
       }
     }
-  }, [inView]);
+  }, [inView, videoId]);
 
   return (
     <div
       ref={ref}
       className="snap-start h-screen w-full flex items-center justify-center relative"
     >
-      <video
-        ref={videoRef}
-        src={videoUrl}
-        controls
-        loop
-        muted
+      <iframe
+        ref={iframeRef}
+        title={description}
         className="h-full w-auto object-contain rounded-xl"
         style={{ aspectRatio: "9/16" }}
+        allow="autoplay; encrypted-media"
       />
       <div className="absolute bottom-16 left-6 text-white max-w-xs">
         <p className="text-lg font-semibold">{description}</p>
@@ -64,7 +56,7 @@ function Reel({ videoUrl, description }) {
 // -------------------- Reel Section --------------------
 export default function ReelSection() {
   const [reels, setReels] = useState([]);
-  const [page, setPage] = useState(1);
+  const [pageToken, setPageToken] = useState("");
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const observer = useRef();
@@ -74,23 +66,27 @@ export default function ReelSection() {
     setLoading(true);
 
     try {
-      const res = await fetch(`https://randomuser.me/api/?results=5&page=${page}`);
+      const res = await fetch(
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=5&q=shorts&pageToken=${pageToken}&key=${API_KEY}`
+      );
       const data = await res.json();
-      if (!data.results || data.results.length === 0) {
+
+      if (!data.items || data.items.length === 0) {
         setHasMore(false);
         return;
       }
 
-      const newReels = data.results.map((user, i) => ({
-        id: reels.length + i + 1,
-        videoUrl: videoUrls[(reels.length + i) % videoUrls.length],
-        description: `Reel by ${user.name.first} ${user.name.last}`,
+      const newReels = data.items.map((item) => ({
+        id: item.id.videoId,
+        videoId: item.id.videoId,
+        description: item.snippet.title,
       }));
 
       setReels((prev) => [...prev, ...newReels]);
-      setPage((prev) => prev + 1);
+      setPageToken(data.nextPageToken || "");
+      if (!data.nextPageToken) setHasMore(false);
     } catch (err) {
-      console.error("Error fetching reels:", err);
+      console.error("Error fetching YouTube reels:", err);
     } finally {
       setLoading(false);
     }
@@ -116,19 +112,19 @@ export default function ReelSection() {
 
   return (
     <div className="snap-y snap-mandatory">
-    {reels.map((reel, index) => {
-      const isLast = index === reels.length - 1;
-      return (
-        <Reel
-          key={reel.id}
-          videoUrl={reel.videoUrl}
-          description={reel.description}
-          ref={isLast ? lastReelRef : null}
-        />
-      );
-    })}
-    {loading && <p className="text-center text-white my-4">Loading more reels...</p>}
-    {!hasMore && <p className="text-center text-white my-4">No more reels</p>}
-  </div>
+      {reels.map((reel, index) => {
+        const isLast = index === reels.length - 1;
+        return (
+          <Reel
+            key={reel.id}
+            videoId={reel.videoId}
+            description={reel.description}
+            ref={isLast ? lastReelRef : null}
+          />
+        );
+      })}
+      {loading && <p className="text-center text-white my-4">Loading more reels...</p>}
+      {!hasMore && <p className="text-center text-white my-4">No more reels</p>}
+    </div>
   );
 }

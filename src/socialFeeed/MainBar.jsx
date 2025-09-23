@@ -1,7 +1,9 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Card, CardHeader, CardBody, CardFooter, Avatar, Button } from "@heroui/react";
 import { FiHeart, FiMessageCircle, FiShare2 } from "react-icons/fi";
 import { Spinner } from "@heroui/react";
+import { CommentModal } from "../Comment-Modal/Comment";
+import { GoBookmarkFill } from "react-icons/go";
 
 function PostCard() {
   const [animeList, setAnimeList] = useState([]);
@@ -10,10 +12,10 @@ function PostCard() {
   const [hasMore, setHasMore] = useState(true);
   const observer = useRef();
 
-  // Track whether user has liked each anime
   const [userLikes, setUserLikes] = useState({});
-  // Track total like count for each anime
   const [likeCounts, setLikeCounts] = useState({});
+
+  const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
 
   const fetchAnime = async () => {
     if (loading || !hasMore) return;
@@ -28,14 +30,12 @@ function PostCard() {
       setAnimeList((prev) => [...prev, ...data.data]);
       setPage((prev) => prev + 1);
 
-      // Initialize states for new items
       const newUserLikes = {};
       const newLikeCounts = {};
       data.data.forEach(anime => {
-        newUserLikes[anime.mal_id] = false; 
-        newLikeCounts[anime.mal_id]  = 0;    
+        newUserLikes[anime.mal_id] = false;
+        newLikeCounts[anime.mal_id] = 0;
       });
-      
 
       setUserLikes(prev => ({ ...prev, ...newUserLikes }));
       setLikeCounts(prev => ({ ...prev, ...newLikeCounts }));
@@ -47,34 +47,29 @@ function PostCard() {
   };
 
   useEffect(() => {
-    fetchAnime(); // first load
+    fetchAnime();
   }, []);
 
-  const lastAnimeRef = useCallback(
-    (node) => {
-      if (loading) return;
-      if (observer.current) observer.current.disconnect();
-      observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && hasMore) {
-          fetchAnime();
-        }
-      });
-      if (node) observer.current.observe(node);
-    },
-    [loading, hasMore]
-  );
+  const lastAnimeRef = useCallback((node) => {
+    if (loading) return;
+    if (observer.current) observer.current.disconnect();
+    observer.current = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && hasMore) fetchAnime();
+    });
+    if (node) observer.current.observe(node);
+  }, [loading, hasMore]);
 
-  // Handle like toggle — one user, one like, one count
   const handleLike = (mal_id) => {
-    setUserLikes(prev => ({
-      ...prev,
-      [mal_id]: !prev[mal_id] // toggle user like state
-    }));
+    const wasLiked = userLikes[mal_id] || false;
+    const newLikedState = !wasLiked;
 
+    setUserLikes(prev => ({ ...prev, [mal_id]: newLikedState }));
     setLikeCounts(prev => ({
       ...prev,
-      [mal_id]: prev[mal_id] + (userLikes[mal_id] ? -1 : 1) // adjust count based on previous state
+      [mal_id]: (prev[mal_id] || 0) + (wasLiked ? -1 : 1)
     }));
+
+   
   };
 
   if (!animeList.length && loading)
@@ -93,7 +88,6 @@ function PostCard() {
             ref={isLast ? lastAnimeRef : null}
             className="w-full max-w-3xl mx-auto bg-black-mood-second-color rounded-2xl shadow-lg p-4 hover:shadow-2xl transition-shadow duration-300 mb-6"
           >
-            {/* Header */}
             <CardHeader className="flex items-center gap-3">
               <Avatar
                 src={anime.images.jpg.image_url}
@@ -105,19 +99,14 @@ function PostCard() {
                 <h4 className="text-md font-semibold text-black-mood-second-text-color">
                   {anime.title}
                 </h4>
-                <p className="text-xs text-gray-500">
-                  Score: {anime.score ?? "N/A"}
-                </p>
+                <p className="text-xs text-gray-500">Score: {anime.score ?? "N/A"}</p>
               </div>
             </CardHeader>
 
-            {/* Body */}
             <CardBody className="mt-3">
               <p className="text-black-mood-text-color text-sm line-clamp-3">
                 {anime.synopsis || "No description available."}
               </p>
-
-              {/* Anime Image */}
               <div className="mt-3 w-full h-64 overflow-hidden rounded-xl">
                 <img
                   src={anime.images.jpg.large_image_url}
@@ -127,32 +116,35 @@ function PostCard() {
               </div>
             </CardBody>
 
-            {/* Footer */}
             <CardFooter className="flex justify-between mt-3">
               <Button
                 variant="light"
                 size="sm"
-                startContent={
-                  <FiHeart
-                    className={isLiked ? "text-red-500 fill-current" : ""}
-                  />
-                }
+                startContent={<FiHeart className={isLiked ? "text-red-500 fill-current" : ""} />}
                 onPress={() => handleLike(anime.mal_id)}
-                className={`text-xl  ${isLiked ? "text-red-500" : "text-black-mood-second-text-color"} hover:text-red-500`}
+                className={`text-xl ${isLiked ? "text-red-500" : "text-black-mood-second-text-color"} hover:text-red-500`}
               >
-               
-                {likeCount > 0 && `Like`}
-
-                {likeCount}
+                Like {likeCount > 0 ? likeCount : ""}
               </Button>
+              <Button
+                variant="light"
+                size="sm"
+                startContent={<GoBookmarkFill />}
+                className="text-black-mood-second-text-color hover:text-blue-500 text-xl"
+              >
+                BookMark
+              </Button>
+
               <Button
                 variant="light"
                 size="sm"
                 startContent={<FiMessageCircle />}
                 className="text-black-mood-second-text-color hover:text-blue-500 text-xl"
+                onPress={() => setIsCommentModalOpen(true)}
               >
                 Comment
               </Button>
+
               <Button
                 variant="light"
                 size="sm"
@@ -172,6 +164,12 @@ function PostCard() {
         </p>
       )}
       {!hasMore && <p className="text-center text-gray-500 my-4"><b>No more anime</b></p>}
+
+      {/* 💬 Render CommentModal HERE inside PostCard */}
+      <CommentModal
+        isOpen={isCommentModalOpen}
+        onOpenChange={setIsCommentModalOpen}
+      />
     </>
   );
 }
