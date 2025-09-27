@@ -3,7 +3,7 @@ import { Card, CardHeader, CardBody, CardFooter, Avatar, Button } from "@heroui/
 import { FiHeart, FiMessageCircle, FiShare2 } from "react-icons/fi";
 import { Spinner } from "@heroui/react";
 import { CommentModal } from "../Comment-Modal/Comment";
-import { GoBookmarkFill } from "react-icons/go";
+
 
 function PostCard() {
   const [animeList, setAnimeList] = useState([]);

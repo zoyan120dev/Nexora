@@ -22,13 +22,6 @@ function Post() {
           Post
         </Button>
       </div>
-      <div className="flex gap-5 items-center">
-        {[...Array(5)].map((_, i) => (
-          <Button key={i}>
-            <MdPhoto className="text-2xl text-green-600" />
-          </Button>
-        ))}
-      </div>
     </section>
   );
 }
